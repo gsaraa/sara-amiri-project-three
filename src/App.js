@@ -7,6 +7,8 @@ import realtime from './firebase.js';
 // Importing functions from firebase database, ref 
 import { ref, push, onValue } from 'firebase/database';
 
+import Reactions from './Reaction.js';
+
 function App() {
   // This state is created to be used later to map through and print on the page
   const [ userCommentList, setUserCommentList ] = useState([]); 
@@ -42,11 +44,11 @@ function App() {
           username: myData[property].username
         }
 
-        console.log(commentObject);
+        // console.log(commentObject);
         // Pushing each comment object after user submits into newArray, which will be mapped through to print on the page
         newArray.push(commentObject);
       }
-      console.log(newArray);
+      // console.log(newArray);
       // Setting newArray, which contains individual user comment object, into state 
       setUserCommentList(newArray);
     });
@@ -82,7 +84,6 @@ function App() {
         message: userComment,
         username: userName
       }
-
       // Calling Firebase's push function, passing it dbRef function and the user input value that is being pushed to the referenced database
       push(dbRef, userObject)
 
@@ -128,6 +129,9 @@ function App() {
                 <li key={individualComment.key}>
                   <p>{individualComment.username}</p>
                   <p>{individualComment.message}</p>
+                  
+                  <Reactions />
+
                 </li>
               )
             })
