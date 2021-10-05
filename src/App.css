@@ -48,10 +48,12 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+/* font-family: 'Amatic SC', cursive;
+font-family: 'Dancing Script', cursive; */
 
-html {
+.app {
   font-size: 125%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .wrapper {
@@ -60,17 +62,42 @@ html {
   max-width: 1200px;
 }
 
+.hero {
+  display: flex;
+  margin: 5rem 0;
+}
+
+header {
+  width: 50%;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4rem;
+}
+
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  flex: 1 0 auto;
 }
 
 form {
+  width: 50%;
   height: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+
+input,
+textarea {
+  border: none;
+  border-bottom: 1px solid lightcoral;
+  border-radius: 5px;
+  padding: 1rem;
 }
 
 textarea {
@@ -78,6 +105,45 @@ textarea {
   height: 10rem;
 }
 
-h1 {
-  font-family: 'Raleway', sans-serif;
+form button {
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  margin: 0 10rem;
+}
+
+/* form button:hover {
+  border-radius: 2rem;
+  border: 2px solid lightsalmon;
+  transition: all .3s ease-in-out;
+} */
+
+/* form button {
+  letter-spacing: 0;
+}
+
+form:hover,
+form:active {
+letter-spacing: 5px;
+} */
+
+form button:after,
+form button:before {
+border: 1px solid white;
+content: " ";
+display: block;
+margin: .5rem auto;
+transition: all 280ms ease-in-out;
+width: 0;
+}
+
+form button:hover:after,
+form button:hover:before {
+  border-color: lightsalmon;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+form button:hover:before {
+width: 70%;
 }

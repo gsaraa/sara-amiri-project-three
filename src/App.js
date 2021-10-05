@@ -31,7 +31,7 @@ function App() {
 
       // Creating a variable to store our database snapshot whenever a change in the database occurs and use the .val() method to parse out just the JSON object that is in the database
       const myData = snapshot.val();
-      // console.log(myData);
+      console.log(myData);
 
       // Creating an empty array to hold the list of comments, that will be mapped through to be printed on the page
       const newArray = [];
@@ -97,46 +97,52 @@ function App() {
   }
 
   return (
-    <div className="wrapper">
-      <h1>Safespace</h1>
+    <div className="app">
+      <div className="wrapper">
+        <div className="hero">
+          <header>
+            <h1>Safespace</h1>
+          </header>
 
-      <form onSubmit={ submitEvent }>
-        
-        <label htmlFor="userName" className="sr-only">Name</label>
-        <input 
-        type="text" 
-        id="userName" 
-        placeholder='Name (Optional)'
-        onChange={ userNameChange }
-        value={ userName } />
+          <form onSubmit={ submitEvent }>
+            
+            <label htmlFor="userName" className="sr-only">Name</label>
+            <input 
+            type="text" 
+            id="userName" 
+            placeholder='Name (Optional)'
+            onChange={ userNameChange }
+            value={ userName } />
 
-        <label htmlFor="messageInput" className="sr-only">Write your message here..</label>
-        <textarea 
-        id="messageInput" 
-        placeholder="Type your message here..."
-        onChange={ userCommentChange }
-        value={ userComment } ></textarea>
+            <label htmlFor="messageInput" className="sr-only">Write your message here..</label>
+            <textarea 
+            id="messageInput" 
+            placeholder="Type your message here..."
+            onChange={ userCommentChange }
+            value={ userComment } ></textarea>
 
-        <button>Post</button>
+            <button>Post</button>
 
-      </form>
+          </form>
+        </div>
 
-      <ul>
-        {
-          // Mapping through the array and printing each userObject on the page
-            userCommentList.map( function (individualComment) {
-              return (
-                <li key={individualComment.key}>
-                  <p>{individualComment.username}</p>
-                  <p>{individualComment.message}</p>
-                  
-                  <Reactions />
+        <ul>
+          {
+            // Mapping through the array and printing each userObject on the page
+              userCommentList.map( function (individualComment) {
+                return (
+                  <li key={individualComment.key}>
+                    <p>{individualComment.username}</p>
+                    <p>{individualComment.message}</p>
+                    
+                    <Reactions />
 
-                </li>
-              )
-            })
-          }
-      </ul>
+                  </li>
+                )
+              })
+            }
+        </ul>
+      </div>
     </div>
   );
 }
