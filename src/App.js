@@ -98,51 +98,54 @@ function App() {
 
   return (
     <div className="app">
-      <div className="wrapper">
-        <div className="hero">
-          <header>
-            <h1>Safespace</h1>
-          </header>
+        <div className="wrapper">
+          <div className="hero">
+            <header>
+              <h1>Safespace</h1>
+            </header>
 
-          <form onSubmit={ submitEvent }>
-            
-            <label htmlFor="userName" className="sr-only">Name</label>
-            <input 
-            type="text" 
-            id="userName" 
-            placeholder='Name (Optional)'
-            onChange={ userNameChange }
-            value={ userName } />
+            <form onSubmit={ submitEvent }>
+              
+              <label htmlFor="userName" className="sr-only">Name</label>
+              <input 
+              type="text" 
+              id="userName" 
+              placeholder='Name (Optional)'
+              onChange={ userNameChange }
+              value={ userName } />
 
-            <label htmlFor="messageInput" className="sr-only">Write your message here..</label>
-            <textarea 
-            id="messageInput" 
-            placeholder="Type your message here..."
-            onChange={ userCommentChange }
-            value={ userComment } ></textarea>
+              <label htmlFor="messageInput" className="sr-only">Write your message here..</label>
+              <textarea 
+              id="messageInput" 
+              placeholder="Type your message here..."
+              onChange={ userCommentChange }
+              value={ userComment } ></textarea>
 
-            <button>Post</button>
+              <button>Post</button>
 
-          </form>
+            </form>
+          </div>
         </div>
 
-        <ul>
-          {
-            // Mapping through the array and printing each userObject on the page
-              userCommentList.map( function (individualComment) {
-                return (
-                  <li key={individualComment.key}>
-                    <p>{individualComment.username}</p>
-                    <p>{individualComment.message}</p>
-                    
-                    <Reactions />
+        <div className="wrapper">
+          <ul>
+            {
+              // Mapping through the array and printing each userObject on the page
+                userCommentList.map( function (individualComment) {
+                  return (
+                    <li key={individualComment.key}>
+                      <p>{individualComment.username}</p>
+                      <p>{individualComment.message}</p>
+                      
+                      <Reactions />
 
-                  </li>
-                )
-              })
-            }
-        </ul>
-      </div>
+                    </li>
+                  )
+                })
+              }
+          </ul>
+        </div>
+        <footer>Created by Sara Amiri</footer>
     </div>
   );
 }

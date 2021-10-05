@@ -54,6 +54,7 @@ font-family: 'Dancing Script', cursive; */
 .app {
   font-size: 125%;
   font-family: 'Raleway', sans-serif;
+  background-color: whitesmoke;
 }
 
 .wrapper {
@@ -64,38 +65,41 @@ font-family: 'Dancing Script', cursive; */
 
 .hero {
   display: flex;
-  margin: 5rem 0;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 5rem 3rem;
 }
 
 header {
-  width: 50%;
+  width: 45%;
+  background: url(./v983batch2-009-x.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
 }
 
 h1 {
   font-family: 'Dancing Script', cursive;
   font-size: 4rem;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex: 1 0 auto;
+  color: #6d6875;
+  padding: 12rem 3rem;
 }
 
 form {
   width: 50%;
-  height: 20rem;
+  height: 100%;
+  padding: 2rem;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border-radius: 1rem;
 }
 
 input,
 textarea {
   border: none;
-  border-bottom: 1px solid lightcoral;
+  border-bottom: 3px solid #cbc0d3;
   border-radius: 5px;
   padding: 1rem;
 }
@@ -112,21 +116,6 @@ form button {
   margin: 0 10rem;
 }
 
-/* form button:hover {
-  border-radius: 2rem;
-  border: 2px solid lightsalmon;
-  transition: all .3s ease-in-out;
-} */
-
-/* form button {
-  letter-spacing: 0;
-}
-
-form:hover,
-form:active {
-letter-spacing: 5px;
-} */
-
 form button:after,
 form button:before {
 border: 1px solid white;
@@ -139,7 +128,7 @@ width: 0;
 
 form button:hover:after,
 form button:hover:before {
-  border-color: lightsalmon;
+  border-color: #cbc0d3;
   transition: width 350ms ease-in-out;
   width: 70%;
 }
@@ -147,3 +136,23 @@ form button:hover:before {
 form button:hover:before {
 width: 70%;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+footer {
+  background-color: white;
+  color: #6d6875;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 1rem 0;
+}
+
