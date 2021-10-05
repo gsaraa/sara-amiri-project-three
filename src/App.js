@@ -1,7 +1,7 @@
 // Importing stylesheet 
 import './App.css';
 // Importing useState and useEffect functions
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 // Importing realtime function from firebase module
 import realtime from './firebase.js';
 // Importing functions from firebase database, ref 
@@ -96,6 +96,12 @@ function App() {
     }
   }
 
+  const commentsSectionScroll = useRef(null);
+
+  const scrollToComments = function() {
+    window.scrollTo({top: commentsSectionScroll.current.offsetTop, behavior: 'smooth'});
+  }
+
   return (
     <div className="app">
         <div className="wrapper">
@@ -121,20 +127,20 @@ function App() {
               onChange={ userCommentChange }
               value={ userComment } ></textarea>
 
-              <button>Post</button>
+              <button onClick={scrollToComments}>Post</button>
 
             </form>
           </div>
         </div>
 
         <div className="wrapper">
-          <ul>
+          <ul ref={commentsSectionScroll}>
             {
               // Mapping through the array and printing each userObject on the page
                 userCommentList.map( function (individualComment) {
                   return (
                     <li key={individualComment.key}>
-                      <p>{individualComment.username}</p>
+                      <h3>{individualComment.username}</h3>
                       <p>{individualComment.message}</p>
                       
                       <Reactions />
