@@ -43,7 +43,7 @@ function Reactions() {
     return (
         <div>
             <button onClick={heartClick}>💕 {heartCounter}</button>
-            <button onClick={fistClick}>✊ {fistCounter}</button>
+            <button onClick={fistClick}>👊 {fistCounter}</button>
             <button onClick={strongClick}>💪{strongCounter}</button>
             <button onClick={clapClick}>👏 {clapCounter}</button>
 
