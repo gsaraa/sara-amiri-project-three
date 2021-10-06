@@ -14,7 +14,7 @@ function CommentDisplay (props) {
                 commentProp.map( function (individualComment)  {
                     return (
                     <li key={individualComment.key}>
-                        <h3>{individualComment.username}</h3>
+                        <h2>{individualComment.username}</h2>
                         <p>{individualComment.message}</p>
                         
                         {/* <Reactions /> */}

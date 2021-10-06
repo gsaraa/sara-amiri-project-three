@@ -114,8 +114,8 @@ function App() {
         <div className="wrapper">
           <div className="hero">
             <header>
-              <h1>Community Diary</h1>
-              <h2></h2>
+              <h1>Community <span>Diary</span></h1>
+              <p>Whether it's a small win you want to celebrate or rant about an inconvience, share it in this virtual community diary</p>
             </header>
 
             <Form 
