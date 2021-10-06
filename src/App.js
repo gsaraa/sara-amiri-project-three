@@ -138,7 +138,7 @@ function App() {
         </div>
 
         <footer>
-          <p>Created by Sara Amiri, created at <a href="https://junocollege.com/">Juno College of Technology</a></p> 
+          <p>Created by Sara Amiri, at <a href="https://junocollege.com/">Juno College of Technology</a></p> 
           </footer>
     </div>
   );
