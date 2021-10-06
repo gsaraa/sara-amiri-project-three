@@ -170,6 +170,12 @@ footer {
   padding: 1rem 0;
 }
 
+.reactions button {
+  background: none;
+  border: none;
+  margin-right: 1rem;
+}
+
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;

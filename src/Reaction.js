@@ -1,6 +1,20 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import realtime from './firebase.js';
+// Importing functions from firebase database, ref 
+import { ref, push, onValue } from 'firebase/database';
 
 function Reactions() {
+    useEffect( function() {
+
+        const dbRef = ref(realtime);
+
+        onValue(dbRef, function(snapshot) {
+
+            const myData = snapshot.val();
+            // console.log(myData.key.reactions)
+        })
+    }, []);
+
     const [heartCounter, setHeartCounter] = useState(0);
     const [fistCounter, setFistCounter] = useState(0);
     const [strongCounter, setStrongCounter] = useState(0);
@@ -9,6 +23,7 @@ function Reactions() {
     const heartClick = function() {
         let newCounter = heartCounter + 1;
         setHeartCounter(newCounter);
+
     }
     const fistClick = function() {
         let newCounter = fistCounter + 1;
@@ -41,7 +56,7 @@ function Reactions() {
     // }
 
     return (
-        <div>
+        <div className='reactions'>
             <button onClick={heartClick}>💕 {heartCounter}</button>
             <button onClick={fistClick}>👊 {fistCounter}</button>
             <button onClick={strongClick}>💪{strongCounter}</button>

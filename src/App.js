@@ -28,10 +28,10 @@ function App() {
     // Setting up Firebase subscription using onValue function, passing it dbRef(reference to realtime database) and a callback function that will run every time there's a change to the database
     onValue(dbRef, function(snapshot) {
       // console.log(snapshot.val()); // Checking to see if it works and it did work
-
+      // console.log(snapshot);
       // Creating a variable to store our database snapshot whenever a change in the database occurs and use the .val() method to parse out just the JSON object that is in the database
       const myData = snapshot.val();
-      console.log(myData);
+      // console.log(myData);
 
       // Creating an empty array to hold the list of comments, that will be mapped through to be printed on the page
       const newArray = [];
@@ -43,8 +43,7 @@ function App() {
           message: myData[property].message,
           username: myData[property].username
         }
-
-        // console.log(commentObject);
+        console.log(commentObject);
         // Pushing each comment object after user submits into newArray, which will be mapped through to print on the page
         newArray.push(commentObject);
       }
@@ -94,8 +93,16 @@ function App() {
     } else {
       alert(`Sorry, it seems like we didn't recieve your message!`)
     }
+  };
+
+  // Function created to remove comment/remove from firebase
+  const deleteComment = function(buttonToDeleteKey) {
+    const specificNode = ref(realtime, buttonToDeleteKey);
+
+    remove(specificNode);
   }
 
+// Function created to scroll to comment section after submit button is triggered
   const commentsSectionScroll = useRef(null);
 
   const scrollToComments = function() {
@@ -107,7 +114,8 @@ function App() {
         <div className="wrapper">
           <div className="hero">
             <header>
-              <h1>Safespace</h1>
+              <h1>Header</h1>
+              {/* <h2>Description of app</h2> */}
             </header>
 
             <form onSubmit={ submitEvent }>
@@ -127,7 +135,7 @@ function App() {
               onChange={ userCommentChange }
               value={ userComment } ></textarea>
 
-              <button onClick={scrollToComments}>Post</button>
+              <button type="submit" onClick={scrollToComments}>Post</button>
 
             </form>
           </div>
@@ -145,6 +153,8 @@ function App() {
                       
                       <Reactions />
 
+                      <button className="delete" onClick={() => deleteComment(individualComment.key)}>✖️</button>
+                
                     </li>
                   )
                 })
