@@ -8,7 +8,10 @@ import realtime from './firebase.js';
 import { ref, push, onValue, remove } from 'firebase/database';
 
 // import Reactions from './Reaction.js';
+// Importing CommentDisplay function 
 import CommentDisplay from './CommentDisplay.js';
+
+import Form from './Form.js'
 
 function App() {
   // This state is created to be used later to map through and print on the page
@@ -44,11 +47,10 @@ function App() {
           message: myData[property].message,
           username: myData[property].username
         }
-        console.log(commentObject);
+        // console.log(commentObject);
         // Pushing each comment object after user submits into newArray, which will be mapped through to print on the page
         newArray.push(commentObject);
       }
-      // console.log(newArray);
       // Setting newArray, which contains individual user comment object, into state 
       setUserCommentList(newArray);
     });
@@ -58,15 +60,12 @@ function App() {
   const userNameChange = function (event) {
     // This sets the default value of userInput whenever the handleChange function runs
       setUserName(event.target.value);
-    // console.log(event.target.value);
   }
 
   // Creating a function to pass to setUserComment function so it listens for any changes in the user comment textarea
   const userCommentChange = function (event) {
      // This sets the default value of userComment whenever the handleChange function runs
     setUserComment(event.target.value);
-
-    // console.log(event.target.value);
   }
 
   // Creating this function to pass to form element so it gets triggered whenever the user submits
@@ -119,33 +118,25 @@ function App() {
               <h2></h2>
             </header>
 
-            <form onSubmit={ submitEvent }>
-              
-              <label htmlFor="userName" className="sr-only">Name</label>
-              <input 
-              type="text" 
-              id="userName" 
-              placeholder='Name'
-              onChange={ userNameChange }
-              value={ userName } />
+            <Form 
+            submitHandle={ submitEvent }
+            userNameValue={ userName }
+            userNameChangeHandle={ userNameChange }
+            userTextValue={ userComment }
+            userTextChangeHandle={ userCommentChange }
+            scroll={ scrollToComments }
+            />
 
-              <label htmlFor="messageInput" className="sr-only">Write your message here..</label>
-              <textarea 
-              id="messageInput" 
-              placeholder="Type your message here..."
-              onChange={ userCommentChange }
-              value={ userComment } ></textarea>
-
-              <button type="submit" onClick={scrollToComments}>Post</button>
-
-            </form>
           </div>
         </div>
 
         <div className="wrapper" ref={commentsSectionScroll}>
-          <CommentDisplay commentProp={userCommentList}
-            deleteComment={deleteComment}/>
+          <CommentDisplay 
+          commentProp={userCommentList}
+          deleteComment={deleteComment}
+          />
         </div>
+
         <footer>
           <p>Created by Sara Amiri, created at <a href="https://junocollege.com/">Juno College of Technology</a></p> 
           </footer>

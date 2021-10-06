@@ -1,7 +1,11 @@
-function CommentDisplay (props) {
+// Import Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-    console.log(props);
+// Function for display user name and message on the webpage + delete the message (removing node from firebase database)
+function CommentDisplay (props) {
     const { commentProp, deleteComment} = props;
+
     return (
     <div className="commentsSection">
         <ul>
@@ -14,7 +18,12 @@ function CommentDisplay (props) {
                         <p>{individualComment.message}</p>
                         
                         {/* <Reactions /> */}
-                        <button className="delete" onClick={() => deleteComment(individualComment.key)}>✖️</button>
+
+                        <button 
+                            className="delete" 
+                            onClick={() => deleteComment(individualComment.key)}>
+                                <FontAwesomeIcon icon={faTimes} />
+                            </button>
                     </li>
                 )
                 })
