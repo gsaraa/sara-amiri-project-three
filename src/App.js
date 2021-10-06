@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 // Importing realtime function from firebase module
 import realtime from './firebase.js';
 // Importing functions from firebase database, ref 
-import { ref, push, onValue } from 'firebase/database';
+import { ref, push, onValue, remove } from 'firebase/database';
 
 import Reactions from './Reaction.js';
 
