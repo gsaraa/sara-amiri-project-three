@@ -7,7 +7,8 @@ import realtime from './firebase.js';
 // Importing functions from firebase database, ref 
 import { ref, push, onValue, remove } from 'firebase/database';
 
-import Reactions from './Reaction.js';
+// import Reactions from './Reaction.js';
+import CommentDisplay from './CommentDisplay.js';
 
 function App() {
   // This state is created to be used later to map through and print on the page
@@ -114,8 +115,8 @@ function App() {
         <div className="wrapper">
           <div className="hero">
             <header>
-              <h1>Header</h1>
-              {/* <h2>Description of app</h2> */}
+              <h1>Community Diary</h1>
+              <h2></h2>
             </header>
 
             <form onSubmit={ submitEvent }>
@@ -124,7 +125,7 @@ function App() {
               <input 
               type="text" 
               id="userName" 
-              placeholder='Name (Optional)'
+              placeholder='Name'
               onChange={ userNameChange }
               value={ userName } />
 
@@ -141,27 +142,13 @@ function App() {
           </div>
         </div>
 
-        <div className="wrapper">
-          <ul ref={commentsSectionScroll}>
-            {
-              // Mapping through the array and printing each userObject on the page
-                userCommentList.map( function (individualComment) {
-                  return (
-                    <li key={individualComment.key}>
-                      <h3>{individualComment.username}</h3>
-                      <p>{individualComment.message}</p>
-                      
-                      <Reactions />
-
-                      <button className="delete" onClick={() => deleteComment(individualComment.key)}>✖️</button>
-                
-                    </li>
-                  )
-                })
-              }
-          </ul>
+        <div className="wrapper" ref={commentsSectionScroll}>
+          <CommentDisplay commentProp={userCommentList}
+            deleteComment={deleteComment}/>
         </div>
-        <footer>Created by Sara Amiri</footer>
+        <footer>
+          <p>Created by Sara Amiri, created at <a href="https://junocollege.com/">Juno College of Technology</a></p> 
+          </footer>
     </div>
   );
 }

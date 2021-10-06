@@ -16,6 +16,7 @@ function Reactions() {
     }, []);
 
     const [heartCounter, setHeartCounter] = useState(0);
+    // const [heartDecrese, setHeartDescrease] = useState();
     const [fistCounter, setFistCounter] = useState(0);
     const [strongCounter, setStrongCounter] = useState(0);
     const [clapCounter, setClapCounter] = useState(0);
@@ -38,10 +39,10 @@ function Reactions() {
         setClapCounter(newCounter);
     }
 
-    // const heartUnclick = function() {
-    //     let decreaseCounter = heartCounter - 1;
-    //     setHeartCounter(decreaseCounter);
-    // }
+    const heartUnclick = function() {
+        let decreaseCounter = heartCounter - 1;
+        setHeartDescrease(decreaseCounter);
+    }
     // const fistUnlick = function() {
     //     let decreaseCounter = fistCounter - 1;
     //     setFistCounter(decreaseCounter);
@@ -57,19 +58,10 @@ function Reactions() {
 
     return (
         <div className='reactions'>
-            <button onClick={heartClick}>💕 {heartCounter}</button>
+            <button onClick={heartClick} onChange={heartClick}>💕 {heartCounter}</button>
             <button onClick={fistClick}>👊 {fistCounter}</button>
             <button onClick={strongClick}>💪{strongCounter}</button>
             <button onClick={clapClick}>👏 {clapCounter}</button>
-
-            {/* {
-                heartCounter + 1 ? 
-                onClick={heartUnclick} : 
-                {heartClick}
-            } */}
-    
-            {/* <p>It is increasing {counter} </p> */}
-
         </div>
     )
 }
