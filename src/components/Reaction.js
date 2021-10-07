@@ -2,8 +2,8 @@
 import realtime from '../firebase.js';
 // Importing functions from firebase database, ref 
 import { ref, set } from 'firebase/database';
+// Importing useState
 import { useState } from 'react';
-
 
 function Reactions(props) {
 

@@ -8,14 +8,14 @@ function Form (props) {
                 <input 
                 type="text" 
                 id="userName" 
-                placeholder='Name (Optional)'
+                placeholder='Name'
                 onChange={ userNameChangeHandle }
                 value={ userNameValue } />
 
                 <label htmlFor="messageInput" className="sr-only">Write your message here..</label>
                 <textarea 
                 id="messageInput" 
-                placeholder="Type your message here..."
+                placeholder="Share your feelings here..."
                 onChange={ userTextChangeHandle }
                 value={ userTextValue } ></textarea>
 

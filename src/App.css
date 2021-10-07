@@ -211,12 +211,12 @@ footer {
   form {
     width: 80%;
     position: absolute;
-    top: 50vh;
+    top: 80vh;
     right: 0;
   }
 
   ul {
-    margin-top: 20rem;
+    margin-top: 35rem;
   }
 }
 
@@ -246,7 +246,8 @@ footer {
     flex-direction: column;
   }
   
-  ul li {
+  .commentsSection li {
     width: 100%;
+    margin: 0;
   }
 }
