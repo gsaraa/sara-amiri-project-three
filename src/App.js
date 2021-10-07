@@ -9,9 +9,9 @@ import { ref, push, onValue, remove } from 'firebase/database';
 
 // import Reactions from './Reaction.js';
 // Importing CommentDisplay function 
-import CommentDisplay from './CommentDisplay.js';
+import CommentDisplay from './components/CommentDisplay.js';
 
-import Form from './Form.js'
+import Form from './components/Form.js'
 
 function App() {
   // This state is created to be used later to map through and print on the page
@@ -31,11 +31,8 @@ function App() {
 
     // Setting up Firebase subscription using onValue function, passing it dbRef(reference to realtime database) and a callback function that will run every time there's a change to the database
     onValue(dbRef, function(snapshot) {
-      // console.log(snapshot.val()); // Checking to see if it works and it did work
-      // console.log(snapshot);
       // Creating a variable to store our database snapshot whenever a change in the database occurs and use the .val() method to parse out just the JSON object that is in the database
       const myData = snapshot.val();
-      // console.log(myData);
 
       // Creating an empty array to hold the list of comments, that will be mapped through to be printed on the page
       const newArray = [];
@@ -45,9 +42,16 @@ function App() {
         const commentObject = {
           key: property,
           message: myData[property].message,
-          username: myData[property].username
+          username: myData[property].username,
+          reactions: {
+            heart: myData[property].reactions.heart,
+            strong: myData[property].reactions.strong,
+            clap: myData[property].reactions.clap,
+            fist: myData[property].reactions.fist
+          }
         }
-        // console.log(commentObject);
+
+        console.log(commentObject);
         // Pushing each comment object after user submits into newArray, which will be mapped through to print on the page
         newArray.push(commentObject);
       }
@@ -72,7 +76,6 @@ function App() {
   const submitEvent = function (event) {
     event.preventDefault();
     
-    
     // Since providing username is optional, the default 
     if (userName && userComment) {
       // Creating a reference to realtime database because the previous reference is within another function, thus making it out of scope
@@ -81,7 +84,13 @@ function App() {
       // Creating a new variable to hold user name and user comment values in and push the variable to firebase
       const userObject = {
         message: userComment,
-        username: userName
+        username: userName,
+        reactions: {
+          heart: 0,
+          strong: 0,
+          clap: 0,
+          fist: 0
+        }
       }
       // Calling Firebase's push function, passing it dbRef function and the user input value that is being pushed to the referenced database
       push(dbRef, userObject)

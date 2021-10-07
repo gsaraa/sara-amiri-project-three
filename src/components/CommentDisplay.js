@@ -2,8 +2,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+// Import Reactions function
+import Reactions from './Reaction.js';
 // Function for display user name and message on the webpage + delete the message (removing node from firebase database)
 function CommentDisplay (props) {
+    // Destructing props
     const { commentProp, deleteComment} = props;
 
     return (
@@ -17,7 +20,8 @@ function CommentDisplay (props) {
                         <h2>{individualComment.username}</h2>
                         <p>{individualComment.message}</p>
                         
-                        {/* <Reactions /> */}
+                        <Reactions reactions={individualComment.reactions}
+                        id={individualComment.key}/>
 
                         <button 
                             className="delete" 

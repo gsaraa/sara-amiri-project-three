@@ -1,3 +1,4 @@
+// Function for user input submission, with props passed to access 
 function Form (props) {
     const { submitHandle, userNameValue, userNameChangeHandle, userTextValue, userTextChangeHandle, scroll } = props;
     return (
